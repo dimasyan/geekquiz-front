@@ -1,11 +1,21 @@
 <template>
-  <div class="container">
-    <div class="banner"></div>
-    <div class="about"></div>
-    <div class="popular"></div>
+  <div class="container mx-auto">
+    <banner />
+    <about />
+    <popular />
   </div>
 </template>
 
 <script>
-export default {}
+import Banner from '@/components/pages/index/Banner'
+import About from '@/components/pages/index/About'
+import Popular from '@/components/pages/index/Popular'
+
+export default {
+  components: {
+    Banner,
+    About,
+    Popular,
+  },
+}
 </script>
