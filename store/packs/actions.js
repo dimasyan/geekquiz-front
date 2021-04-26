@@ -10,4 +10,12 @@ export default {
       commit('setPacks', resp.data.results)
     }
   },
+  async getPack({ commit }, id) {
+    const [err, resp] = await to(api.packs.getPack(id))
+    if (err) {
+      console.log(err)
+    } else {
+      commit('setPack', resp.data)
+    }
+  },
 }

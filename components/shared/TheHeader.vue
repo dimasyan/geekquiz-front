@@ -1,9 +1,9 @@
 <template>
   <div class="header flex justify-between px-12 py-6 bg-blue-700 bg-opacity-75">
     <div class="header-logo">
-      <span class="header-logo-title uppercase font-larger text-3xl"
-        >Geekquiz</span
-      >
+      <NuxtLink to="/" class="header-logo-title uppercase font-larger text-3xl"
+        >Geekquiz
+      </NuxtLink>
     </div>
     <div class="header-action flex items-center">
       <div class="header-menu flex mx-2">

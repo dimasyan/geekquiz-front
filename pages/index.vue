@@ -17,5 +17,12 @@ export default {
     About,
     Popular,
   },
+  async fetch({ store }) {
+    try {
+      await store.dispatch('packs/getPacks')
+    } catch (err) {
+      console.log(err)
+    }
+  },
 }
 </script>
