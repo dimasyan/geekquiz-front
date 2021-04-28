@@ -15,7 +15,7 @@
           {{ item.title }}
         </div>
       </div>
-      <button class="btn btn-white">Войти</button>
+      <button class="btn btn-white" @click="showLogin">Войти</button>
     </div>
   </div>
 </template>
@@ -44,6 +44,12 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    showLogin() {
+      console.log('sadasdas')
+      this.$emit('show-login')
+    },
   },
 }
 </script>
