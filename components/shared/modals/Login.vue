@@ -25,11 +25,7 @@
       <button class="btn btn-danger" @click="dialogVisible = false">
         Cancel
       </button>
-      <button
-        class="btn btn-blue"
-        type="primary"
-        @click="dialogVisible = false"
-      >
+      <button class="btn btn-blue" type="primary" @click="submit">
         Confirm
       </button>
     </span>
@@ -37,6 +33,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   props: {
     show: {
@@ -56,11 +54,16 @@ export default {
     },
   },
   methods: {
+    ...mapActions('auth', ['signIn']),
     handleClose() {
       this.$emit('close-login')
     },
     showRegister() {
       this.$emit('show-register')
+    },
+    submit() {
+      this.signIn({ email: this.email, password: this.password })
+      this.dialogVisible = false
     },
   },
 }

@@ -7,7 +7,7 @@ export default {
     if (err) {
       console.log(err)
     } else {
-      commit('signIn', resp.data)
+      commit('setUser', resp.data)
     }
   },
   async register({ commit }, data) {
@@ -15,10 +15,16 @@ export default {
     if (err) {
       console.log(err)
     } else {
-      commit('register', resp.data)
+      commit('setUser', resp.data)
     }
   },
   logout({ commit }) {
     commit('logout')
+  },
+  setToken({ commit }, token) {
+    commit('setToken', token)
+  },
+  setUsername({ commit }, username) {
+    commit('setUsername', username)
   },
 }

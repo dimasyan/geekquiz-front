@@ -15,12 +15,17 @@
           {{ item.title }}
         </div>
       </div>
-      <button class="btn btn-white" @click="showLogin">Войти</button>
+      <button v-if="isAuth" class="btn btn-white">
+        {{ username }}
+      </button>
+      <button v-else class="btn btn-white" @click="showLogin">Войти</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'TheHeader',
   data() {
@@ -45,9 +50,14 @@ export default {
       ],
     }
   },
+  computed: {
+    ...mapState({
+      isAuth: (state) => state.auth.isAuth,
+      username: (state) => state.auth.username,
+    }),
+  },
   methods: {
     showLogin() {
-      console.log('sadasdas')
       this.$emit('show-login')
     },
   },
