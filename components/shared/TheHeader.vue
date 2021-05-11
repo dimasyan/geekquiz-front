@@ -15,9 +15,13 @@
           {{ item.title }}
         </div>
       </div>
-      <button v-if="isAuth" class="btn btn-white">
-        {{ username }}
-      </button>
+      <nuxt-link
+        v-if="isAuth"
+        to="/profile"
+        tag="button"
+        class="btn btn-white"
+        >{{ username }}</nuxt-link
+      >
       <button v-else class="btn btn-white" @click="showLogin">Войти</button>
     </div>
   </div>

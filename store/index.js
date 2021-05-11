@@ -1,7 +1,7 @@
 export const actions = {
-  nuxtServeInit({ dispatch }) {
-    const token = localStorage.getItem('token')
-    const username = localStorage.getItem('username')
+  nuxtServerInit({ dispatch }, { app }) {
+    const token = app.$cookies.get('token')
+    const username = app.$cookies.get('username')
     if (token) {
       dispatch('auth/setToken', token)
     }

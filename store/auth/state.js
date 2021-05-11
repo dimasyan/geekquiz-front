@@ -3,4 +3,5 @@ export default () => ({
   username: null,
   id: null,
   token: null,
+  user: null,
 })

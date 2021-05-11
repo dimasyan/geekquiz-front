@@ -22,9 +22,7 @@
       >
     </div>
     <span slot="footer" class="dialog-footer">
-      <button class="btn btn-danger" @click="dialogVisible = false">
-        Cancel
-      </button>
+      <button class="btn btn-danger" @click="close">Cancel</button>
       <button class="btn btn-blue" type="primary" @click="submit">
         Confirm
       </button>
@@ -55,6 +53,10 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['signIn']),
+    close() {
+      this.handleClose()
+      this.dialogVisible = false
+    },
     handleClose() {
       this.$emit('close-login')
     },

@@ -4,16 +4,23 @@ export default {
     state.username = data.user.username
     state.isAuth = true
     state.id = data.user.id
-    localStorage.setItem('token', state.token)
-    localStorage.setItem('username', state.username)
+    this.$cookies.set('token', state.token)
+    this.$cookies.set('username', state.username)
+    // localStorage.setItem('token', state.token)
+    // localStorage.setItem('username', state.username)
+  },
+  setProfile(state, data) {
+    state.profile = { ...data }
   },
   logout(state) {
     state.token = null
     state.username = null
     state.isAuth = false
     state.id = null
-    localStorage.removeItem('token')
-    localStorage.removeItem('username')
+    this.$cookies.remove('token')
+    this.$cookies.remove('username')
+    // localStorage.removeItem('token')
+    // localStorage.removeItem('username')
   },
   setToken(state, token) {
     state.token = token
