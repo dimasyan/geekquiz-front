@@ -9,7 +9,7 @@
         <img class="rounded" src="../../../assets/images/slip.gif" />
       </div>
       <div class="flex justify-center mt-10">
-        <button @click="playAgain" class="btn btn-success mr-6">
+        <button class="btn btn-success mr-6" @click="playAgain">
           Сыграть еще
         </button>
         <nuxt-link to="/">

@@ -6,4 +6,6 @@ export default () => ({
   questionIndex: 0,
   score: 0,
   finished: false,
+  history: [],
+  historyCount: 0,
 })

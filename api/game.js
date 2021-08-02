@@ -8,14 +8,19 @@ const client = axios.create({
   baseURL: 'http://127.0.0.1:8000/',
 })
 
-export const createGame = (packId) => client.get(`start-game/?pack=${packId}`)
+export const createGame = (packId, token) => {
+  const config = token
+    ? { headers: { Authorization: `Bearer ${token}` } }
+    : null
+  return client.get(`start-game/?pack=${packId}`, config)
+}
 
-export const updateGame = (gameId, score) =>
-  client.put(`game/${gameId}`, { score })
+export const updateGame = (gameId, score, token) => {
+  const config = token
+    ? { headers: { Authorization: `Bearer ${token}` } }
+    : null
+  return client.put(`game/${gameId}`, { score }, config)
+}
 
-export const updateGameAuth = (gameId, score, token) =>
-  client.put(
-    `game/${gameId}`,
-    { score },
-    { headers: { Authorization: `Bearer ${token}` } }
-  )
+export const getHistory = (token) =>
+  client.get(`games/`, { headers: { Authorization: `Bearer ${token}` } })

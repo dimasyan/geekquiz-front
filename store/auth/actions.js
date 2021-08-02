@@ -27,8 +27,8 @@ export default {
   setUsername({ commit }, username) {
     commit('setUsername', username)
   },
-  async getProfile({ commit }, token) {
-    const [err, resp] = await to(api.auth.profile(token))
+  async getProfile({ commit, state }) {
+    const [err, resp] = await to(api.auth.profile(state.token))
     if (err) {
       console.log(err)
     } else {

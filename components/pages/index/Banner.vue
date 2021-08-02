@@ -7,25 +7,23 @@
       <div class="banner-content-text mb-10">Выбери тему и начни игру:</div>
       <div class="banner-content-action flex justify-between">
         <div
-          class="banner-content-action-item flex-col p-4 rounded cursor-pointer"
+          v-for="(pack, index) in bannerPacks"
+          :key="index"
+          class="banner-content-action-item flex-col p-4 rounded-xl cursor-pointer"
+          :class="{ active: pack.id === selectedPack }"
+          @click="selectPack(pack.id)"
         >
-          <img src="~assets/icons/video.svg" class="mb-4" />
-          <span>Кино</span>
-        </div>
-        <div
-          class="banner-content-action-item flex-col p-4 rounded cursor-pointer"
-        >
-          <img src="~assets/icons/football.svg" class="mb-4" />
-          <span>Футбол</span>
-        </div>
-        <div
-          class="banner-content-action-item flex-col p-4 rounded cursor-pointer"
-        >
-          <img src="~assets/icons/musical-note.svg" class="mb-4" />
-          <span>Музыка</span>
+          <img :src="pack.image" class="mb-4" alt="banner pack image" />
+          <span>{{ pack.name }}</span>
         </div>
       </div>
-      <button class="btn bg-red-500 mt-6">Начать</button>
+      <button
+        class="btn btn-large bg-red-700 mt-6 text-black text-2xl"
+        :disabled="!selectedPack"
+        @click="startGame"
+      >
+        Начать
+      </button>
     </div>
   </div>
 </template>
@@ -33,12 +31,48 @@
 <script>
 export default {
   name: 'Banner',
+  data() {
+    return {
+      bannerPacks: [
+        {
+          id: 1,
+          name: 'Кино',
+          image: require('../../../assets/icons/video.svg'),
+        },
+        {
+          id: 3,
+          name: 'Футбол',
+          image: require('../../../assets/icons/football.svg'),
+        },
+        {
+          id: 2,
+          name: 'Музыка',
+          image: require('../../../assets/icons/musical-note.svg'),
+        },
+      ],
+      selectedPack: null,
+    }
+  },
+  methods: {
+    startGame() {
+      this.$router.push(`/game/${this.selectedPack}`)
+    },
+    selectPack(id) {
+      this.selectedPack = id
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 .banner {
-  background: url('~assets/images/batman.jpeg') center, rgba(128, 128, 128, 0.5);
+  background: linear-gradient(
+      78.02deg,
+      rgba(0, 0, 0, 0.4) 92.3%,
+      rgba(0, 0, 0, 0) 95.37%
+    ),
+    url('~assets/images/bg2.jpg') center, rgba(128, 128, 128, 0.7);
+  background-size: cover;
   &-content {
     &-title {
       font-size: 54px;
@@ -47,13 +81,17 @@ export default {
       font-size: 32px;
     }
     &-action-item {
-      opacity: 0.6;
+      opacity: 0.8;
       &:hover {
-        opacity: 1;
+        opacity: 0.9;
         @apply bg-gray-500 bg-opacity-25;
       }
       img {
         width: 100px;
+      }
+      &.active {
+        opacity: 1;
+        @apply bg-gray-400 bg-opacity-50;
       }
     }
   }

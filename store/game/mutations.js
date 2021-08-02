@@ -27,4 +27,8 @@ export default {
       finished: false,
     }
   },
+  setGamesHistory(state, data) {
+    state.history = data.results
+    state.historyCount = data.count
+  },
 }

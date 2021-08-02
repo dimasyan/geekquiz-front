@@ -1,6 +1,7 @@
 export default {
   setUser(state, data) {
     state.token = data.token
+    console.log(data)
     state.username = data.user.username
     state.isAuth = true
     state.id = data.user.id
