@@ -36,10 +36,6 @@ export default {
     return {
       menuItems: [
         {
-          title: 'Главная',
-          to: '',
-        },
-        {
           title: 'Тематики',
           to: '',
         },
